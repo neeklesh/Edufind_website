@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduFind - School Details</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+  <nav class="bg-white shadow-sm p-4 flex justify-between">
+    <span class="text-xl font-bold text-blue-600">EduFind</span>
+    <div class="space-x-4">
+      <a href="index.html" class="text-gray-600">Home</a>
+      <a href="schools.html" class="text-gray-600">Schools</a>
+      <a href="compare.html" class="text-gray-600">Compare</a>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto py-8">
+    <h1 class="text-3xl font-bold text-gray-800">Global Public School</h1>
+    <p class="text-gray-600">Board: CBSE | Fees: ₹25,000 | Location: Mayur Vihar</p>
+    <div class="mt-4">
+      <button onclick="addToCompare('Global Public School','CBSE','₹25,000','Mayur Vihar')" class="bg-gray-200 px-4 py-2 rounded">Add to Compare</button>
+    </div>
+  </main>
+
+  <script>
+    function addToCompare(name, board, fees, location) {
+      let compareSchools = JSON.parse(localStorage.getItem("compareSchools")) || [];
+      if (compareSchools.length >= 3) {
+        alert("You can only compare up to 3 schools.");
+        return;
+      }
+      if (compareSchools.find(s => s.name === name)) {
+        alert("This school is already in your comparison list.");
+        return;
+      }
+      compareSchools.push({ name, board, fees, location });
+      localStorage.setItem("compareSchools", JSON.stringify(compareSchools));
+      alert(name + " added to comparison!");
+    }
+  </script>
+</body>
+</html>

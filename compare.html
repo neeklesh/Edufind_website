@@ -6,40 +6,24 @@
   <title>EduFind - Compare Schools</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50">
-  <nav class="bg-white shadow-sm p-4 flex justify-between">
-    <span class="text-xl font-bold text-blue-600">EduFind</span>
-    <div class="space-x-4">
-      <a href="index.html" class="text-gray-600">Home</a>
-      <a href="schools.html" class="text-gray-600">Schools</a>
-      <a href="compare.html" class="text-blue-600">Compare</a>
+<body>
+  <h1 class="text-2xl font-bold text-center mt-6">Compare Schools</h1>
+  <div class="grid grid-cols-3 gap-6 p-6">
+    <div class="bg-white shadow rounded-lg p-4">
+      <img src="https://picsum.photos/200/150?random=9" class="w-full h-32 object-cover mb-2" alt="School">
+      <h2 class="text-lg font-bold">Global Public School</h2>
+      <p>CBSE | Fees ₹25,000</p>
     </div>
-  </nav>
-
-  <main class="max-w-6xl mx-auto py-8">
-    <h1 class="text-3xl font-bold text-gray-800 mb-6">Compare Schools</h1>
-    <div id="compare-container" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-  </main>
-
-  <script>
-    const compareSchools = JSON.parse(localStorage.getItem("compareSchools")) || [];
-    const container = document.getElementById("compare-container");
-
-    if (compareSchools.length === 0) {
-      container.innerHTML = "<p class='text-gray-600'>No schools selected for comparison.</p>";
-    } else {
-      compareSchools.forEach(school => {
-        const card = document.createElement("div");
-        card.className = "bg-white shadow rounded-lg p-6";
-        card.innerHTML = `
-          <h2 class="text-xl font-bold">${school.name}</h2>
-          <p class="text-gray-500">Board: ${school.board}</p>
-          <p>Fees: ${school.fees}</p>
-          <p>Location: ${school.location}</p>
-        `;
-        container.appendChild(card);
-      });
-    }
-  </script>
+    <div class="bg-white shadow rounded-lg p-4">
+      <img src="https://picsum.photos/200/150?random=10" class="w-full h-32 object-cover mb-2" alt="School">
+      <h2 class="text-lg font-bold">Delhi International Academy</h2>
+      <p>ICSE | Fees ₹35,000</p>
+    </div>
+    <div class="bg-white shadow rounded-lg p-4">
+      <img src="https://picsum.photos/200/150?random=11" class="w-full h-32 object-cover mb-2" alt="School">
+      <h2 class="text-lg font-bold">Little Angels School</h2>
+      <p>State Board | Fees ₹18,000</p>
+    </div>
+  </div>
 </body>
 </html>
